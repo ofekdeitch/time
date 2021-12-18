@@ -11,11 +11,10 @@ import {
     MILLISECONDS_IN_MONTH,
     MILLISECONDS_IN_SECOND,
     MILLISECONDS_IN_WEEK,
-    MILLISECONDS_IN_YEAR
-} from '../constants';
+    MILLISECONDS_IN_YEAR,
+} from "../constants";
 
 export class Duration {
-
     private millis: number;
 
     constructor(millis: number) {
@@ -93,5 +92,4 @@ export class Duration {
     static years(amount: number): Duration {
         return new Duration(amount * MILLISECONDS_IN_YEAR);
     }
-
 }

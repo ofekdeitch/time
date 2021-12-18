@@ -42,6 +42,15 @@ jobs:
           root: .
           paths:
             - lib
+  lint:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: Run lint
+          command: "npm run lint"
   release:
     <<: *defaults
     steps:
@@ -63,6 +72,9 @@ workflows:
           requires:
             - install
       - build:
+          requires:
+            - install
+      - lint:
           requires:
             - install
       - release:
