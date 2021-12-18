@@ -259,16 +259,16 @@ Deconstructs a given Duration object into the extact amount of milliseconds, sec
 ```ts
 
 const ninetyMinutes = Duration.minutes(90)
-
 const deconstructed = ninetyMinutes.deconstruct()
+
 deconstructed.milliseconds // 0
 deconstructed.seconds // 0
 deconstructed.minutes // 30
 deconstructed.hours // 1
-deconstructed.days // 1
-deconstructed.weeks // 1
-deconstructed.months // 1
-deconstructed.years // 1
+deconstructed.days // 0
+deconstructed.weeks // 0
+deconstructed.months // 0
+deconstructed.years // 0
 
 ```
 **Note:**<br/>
