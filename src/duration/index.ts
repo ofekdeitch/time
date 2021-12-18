@@ -13,6 +13,7 @@ import {
     MILLISECONDS_IN_WEEK,
     MILLISECONDS_IN_YEAR,
 } from "../constants";
+import { DeconstructedDuration } from "./glossary";
 
 export class Duration {
     private millis: number;
@@ -59,6 +60,43 @@ export class Duration {
 
     reduce(duration: Duration): Duration {
         return Duration.milliseconds(this.toMilliseconds() - duration.toMilliseconds());
+    }
+
+    deconstruct(): DeconstructedDuration {
+        let val = Duration.milliseconds(this.toMilliseconds());
+
+        const years = Math.floor(val.toYears());
+        val = val.reduce(Duration.years(years));
+
+        const months = Math.floor(val.toMonths());
+        val = val.reduce(Duration.months(months));
+
+        const weeks = 0;
+
+        const days = Math.floor(val.toDays());
+        val = val.reduce(Duration.days(days));
+
+        const hours = Math.floor(val.toHours());
+        val = val.reduce(Duration.hours(hours));
+
+        const minutes = Math.floor(val.toMinutes());
+        val = val.reduce(Duration.minutes(minutes));
+
+        const seconds = Math.floor(val.toSeconds());
+        val = val.reduce(Duration.seconds(seconds));
+
+        const milliseconds = val.toMilliseconds();
+
+        return {
+            milliseconds,
+            seconds,
+            minutes,
+            hours,
+            days,
+            weeks,
+            months: months,
+            years,
+        };
     }
 
     static milliseconds(amount: number): Duration {
