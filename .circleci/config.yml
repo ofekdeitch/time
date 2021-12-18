@@ -7,15 +7,33 @@ defaults: &defaults
     - image: circleci/node:14
 
 jobs:
-  say-hello:
+  install:
     <<: *defaults
     steps:
       - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
       - run:
-          name: "Say hello"
-          command: "echo Hello, World!"
+          name: Install NPM dependencies
+          command: "npm ci"
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+  test:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: Run tests
+          command: "npm run test"
 
 workflows:
   ci-cd:
     jobs:
-      - say-hello
+      - install
+      - test:
+          requires:
+            - install
