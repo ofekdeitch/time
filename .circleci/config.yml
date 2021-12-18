@@ -29,6 +29,31 @@ jobs:
       - run:
           name: Run tests
           command: "npm run test"
+  build:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: Build
+          command: "npm run build"
+      - persist_to_workspace:
+          root: .
+          paths:
+            - lib
+  release:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run:
+          name: Set npmrc credentials
+          command: echo -e $NPMRC > ~/.npmrc
+      - run:
+          name: Publish to NPM
+          command: npx published --git-tag
 
 workflows:
   ci-cd:
@@ -37,3 +62,10 @@ workflows:
       - test:
           requires:
             - install
+      - build:
+          requires:
+            - install
+      - release:
+          requires:
+            - build
+            - test
