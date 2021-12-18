@@ -10,6 +10,7 @@ jobs:
   install:
     <<: *defaults
     steps:
+      - checkout
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
@@ -22,6 +23,7 @@ jobs:
   test:
     <<: *defaults
     steps:
+      - checkout
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
