@@ -1,1 +1,2 @@
-export const Greeter = (name: string) => `Hello ${name}!!!!`; 
+export { Instant } from './instant';
+export { Duration } from './duration';
