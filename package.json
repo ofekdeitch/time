@@ -1,0 +1,32 @@
+{
+  "name": "@jocular/time",
+  "version": "0.0.1",
+  "description": "",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ofekdeitch/time.git"
+  },
+  "files": [
+    "lib/**/*"
+  ],
+  "keywords": [],
+  "author": "Ofek Deitch",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ofekdeitch/time/issues"
+  },
+  "homepage": "https://github.com/ofekdeitch/time#readme",
+  "devDependencies": {
+    "typescript": "^4.5.4"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {}
+}
