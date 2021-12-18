@@ -1,9 +1,8 @@
-import { Duration } from '../duration';
+import { Duration } from "../duration";
 
 export class Instant extends Date {
-
     constructor(arg: any) {
-        super(arg)
+        super(arg);
 
         // Set the prototype explicitly.
         Object.setPrototypeOf(this, Instant.prototype);
@@ -14,7 +13,7 @@ export class Instant extends Date {
     }
 
     static now(): number {
-        throw new Error('Please use Instant.get()');
+        throw new Error("Please use Instant.get()");
     }
 
     add(duration: Duration): Instant {
@@ -43,7 +42,4 @@ export class Instant extends Date {
     isAfter(instant: Instant): boolean {
         return this.valueOf() > instant.valueOf();
     }
-    
-
-
 }
