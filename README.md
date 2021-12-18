@@ -52,7 +52,7 @@ const oneDayBeforeNow = now.reduce(Duration.days(1))
 
 #### isBefore
 
-Checks whether an instant preceeds another instant:
+Checks whether an instant precedes another instant:
 
 ```ts
 const now = Instant.get()
@@ -66,7 +66,7 @@ now.isBefore(yesterday) // false
 
 #### isAfter
 
-Checks whether an instant preceeds another instant:
+Checks whether an instant follows another instant:
 
 ```ts
 const now = Instant.get()
