@@ -33,5 +33,5 @@ workflows:
     jobs:
       - install
       - test:
-        requires:
-          - install
+          requires:
+            - install
