@@ -9,7 +9,7 @@ describe("Instant", () => {
         jest.spyOn(Date, "now").mockImplementation(() => now.valueOf());
     });
 
-    it.only("now", () => {
+    it("now", () => {
         expect(Instant.get().equals(now)).toBeTruthy();
     });
 
