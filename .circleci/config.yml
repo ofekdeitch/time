@@ -29,6 +29,16 @@ jobs:
       - run:
           name: Run tests
           command: "npm run test"
+  release:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run:
+          name: Set npmrc credentials
+          command: echo -e $NPMRC > ~/.npmrc
+      - run:
+          name: Publish to NPM
+          command: npx published --git-tag
 
 workflows:
   ci-cd:
