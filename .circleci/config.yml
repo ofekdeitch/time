@@ -15,7 +15,7 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: Install NPM dependencies
-          command: "[ -d node_modules ] || npm i"
+          command: "npm ci"
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
@@ -33,5 +33,8 @@ jobs:
 workflows:
   ci-cd:
     jobs:
-      - say-hello
+      - install
       - test
+        context: org-global
+            requires:
+              - install
