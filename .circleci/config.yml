@@ -34,6 +34,7 @@ workflows:
   ci-cd:
     jobs:
       - install
-      - test
+      - test:
+        context: org-global
         requires:
           - install
