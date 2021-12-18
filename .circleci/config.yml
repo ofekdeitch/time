@@ -35,6 +35,5 @@ workflows:
     jobs:
       - install
       - test
-        context: org-global
         requires:
           - install
