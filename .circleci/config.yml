@@ -27,7 +27,7 @@ jobs:
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
-          name: "Run tests"
+          name: Run tests
           command: "npm run test"
 
 workflows:
