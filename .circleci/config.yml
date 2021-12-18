@@ -29,6 +29,15 @@ jobs:
       - run:
           name: Run tests
           command: "npm run test"
+  build:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: Build
+          command: "npm run build"
   release:
     <<: *defaults
     steps:
@@ -49,6 +58,10 @@ workflows:
       - test:
           requires:
             - install
+      - build:
+          requires:
+            - install
       - release:
           requires:
+            - build
             - test
