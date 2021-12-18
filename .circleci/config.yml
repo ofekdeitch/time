@@ -36,5 +36,5 @@ workflows:
       - install
       - test
         context: org-global
-            requires:
-              - install
+        requires:
+          - install
