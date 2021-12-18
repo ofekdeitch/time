@@ -30,6 +30,8 @@ jobs:
           name: Run tests
           command: "npm run test"
   release:
+    <<: *defaults
+    steps:
       - checkout
       - attach_workspace:
           at: .
@@ -47,3 +49,6 @@ workflows:
       - test:
           requires:
             - install
+      - release:
+          requires:
+            - test
