@@ -94,7 +94,7 @@ export class Duration {
             hours,
             days,
             weeks,
-            months: months,
+            months,
             years,
         };
     }
