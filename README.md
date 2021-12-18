@@ -7,6 +7,21 @@ The two main utility classes are:
 2. [Duration](https://github.com/ofekdeitch/time#duration)
 <br/>
 
+## Installing
+
+Using npm:
+```bash
+$ npm install @jocular/time
+```
+
+Using yarn:
+```bash
+$ yarn add @jocular/time
+```
+
+<br/>
+
+
 ## Instant
 
 Instant is an extention of JavaScript's native Date class.<br/>
