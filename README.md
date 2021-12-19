@@ -269,21 +269,24 @@ const fortyMinutes = oneHour.reduce(twentyMinutes)
 
 ### deconstruct
 
-Deconstructs a given Duration object into the extact amount of milliseconds, seconds, minutes, etc. that represent it:
+Deconstructs a given Duration object into the extact amount of years, months, days, hours, minutes, etc. it consists of.<br/>
+This function comes in handy when formatting a Duration object:
 
 ```ts
 
 const ninetyMinutes = Duration.minutes(90)
-const deconstructed = ninetyMinutes.deconstruct()
+const { hours, minutes } = ninetyMinutes.deconstruct()
 
-deconstructed.milliseconds // 0
-deconstructed.seconds // 0
-deconstructed.minutes // 30
-deconstructed.hours // 1
-deconstructed.days // 0
-deconstructed.weeks // 0
-deconstructed.months // 0
-deconstructed.years // 0
+console.log(`${hours} hours, ${minutes} minutes`) // 1 hours, 30 minutes
+
+```
+or:
+```ts
+
+const fiftyHours = Duration.hours(50)
+const { days, hours } = fiftyHours.deconstruct()
+
+console.log(`${days} days, ${hours} hours`) // 2 days, 2 hours
 
 ```
 **Note:**<br/>
